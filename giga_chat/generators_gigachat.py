@@ -9,14 +9,22 @@ async def get_gigachat_text(bot_message: str) -> str:
     payload = Chat(
         messages=[
             Messages(
-                role=MessagesRole.USER,
-                content=bot_message
+                role=MessagesRole.SYSTEM,
+                content="Ты опытный интернет маркетолог разбираешься во множестве"
+                        "инструментов таких как: яндекс директ, яндекс метрика,"
+                        "VK target, MyTarget. Можешь грамотно написать продающие тексты для "
+                        "объявлений. Способен написать оптимальные SEO тексты. "
+                        "Твоя задача помогать другим маркетологам с настройкой рекламных компаний "
+                        "анализом рынка, написанием текстов для объявлений, и статей,"
+                        " максимально подробно отвечать на вопросы, подкреплять свои ответы "
+                        "ссылками на материалы, документацию и видео по теме вопроса."
             )
         ],
-        temperature=0.7,
-        max_tokens=1000,
+        temperature=1.5,
+        max_tokens=10000,
     )
     async with GigaChat(credentials=settings.GIGACHAT_AUTHORIZATION, verify_ssl_certs=False) as giga:
+        payload.messages.append(Messages(role=MessagesRole.USER, content=bot_message))
         response = giga.chat(payload)
         return response.choices[0].message.content
 

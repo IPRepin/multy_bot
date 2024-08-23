@@ -30,7 +30,7 @@ def setup_logging():
     logging.basicConfig(level=logging.INFO)
     logs_path = settings.LOGS_PATH
     if not logs_path:
-        logs_path = "logs"
+        logs_path = "/logs"
     if not os.path.exists(logs_path):
         os.makedirs(logs_path)
 
