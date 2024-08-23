@@ -1,12 +1,15 @@
+import logging
+
 from aiogram import Router, types, F
 from aiogram.fsm.context import FSMContext
 
-from giga_chat.generators_gigachat import get_gigachat_text
+from giga_chat.generators_gigachat import get_gigachat_text, get_quantity_tokens
 from keyboards.gigachat_keyboards.gigachat_replay_keyboards import get_gigachat_keyboard
 from keyboards.replay_keyboards import get_main_keyboard
 from utils.states import ChatStates
 
 gigachat_router = Router()
+logger = logging.getLogger(__name__)
 
 
 @gigachat_router.message(F.text.in_(["Новый запрос", "🤖Нейро помошник маркеторлога"]))
@@ -25,6 +28,7 @@ async def get_chat_response(message: types.Message, state: FSMContext) -> None:
     await message.answer(gpt_answer,
                          reply_markup=await get_gigachat_keyboard())
     await state.clear()
+    logger.error("Количество оставшихся токенов: %s", await get_quantity_tokens())
 
 
 @gigachat_router.message(ChatStates.wait)
