@@ -41,6 +41,7 @@ async def get_gigachat_image(msg: str) -> str:
         text = response.choices[0].message.content
         match = re.search(r'src="([^"]+)"', text)
         image: Image = await giga.aget_image(file_id=match.group(1))
+        return image
 
 
 async def get_quantity_tokens() -> int:
