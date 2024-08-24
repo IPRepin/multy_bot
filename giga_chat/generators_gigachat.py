@@ -41,3 +41,9 @@ async def get_gigachat_image(msg: str) -> str:
         text = response.choices[0].message.content
         match = re.search(r'src="([^"]+)"', text)
         image: Image = await giga.aget_image(file_id=match.group(1))
+
+
+async def get_quantity_tokens() -> int:
+    async with GigaChat(credentials=settings.GIGACHAT_AUTHORIZATION, verify_ssl_certs=False) as giga:
+        result = giga.tokens_count(input_=["12345"])
+        return result
