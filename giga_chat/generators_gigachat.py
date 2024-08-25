@@ -7,6 +7,7 @@ from config import settings
 
 async def get_gigachat_text(bot_message: str) -> str:
     payload = Chat(
+        model="",
         messages=[
             Messages(
                 role=MessagesRole.SYSTEM,
@@ -21,7 +22,8 @@ async def get_gigachat_text(bot_message: str) -> str:
             )
         ],
         temperature=1.5,
-        max_tokens=10000,
+        max_tokens=4096,
+
     )
     async with GigaChat(credentials=settings.GIGACHAT_AUTHORIZATION, verify_ssl_certs=False) as giga:
         payload.messages.append(Messages(role=MessagesRole.USER, content=bot_message))
@@ -33,7 +35,7 @@ async def get_gigachat_image(msg: str) -> str:
     payload = Chat(
         messages=[Messages(role=MessagesRole.USER, content=msg)],
         temperature=0.7,
-        max_tokens=1000,
+        max_tokens=4096,
         function_call="auto",
     )
     async with GigaChat(credentials=settings.GIGACHAT_AUTHORIZATION, verify_ssl_certs=False) as giga:

@@ -9,6 +9,7 @@ from config import settings
 from data.postgresql_connect import create_db, session_factory
 from handlers.commands_handler import command_router
 from handlers.currency_handlers import currency_router
+from handlers.empty_handler import empty_handler_router
 from handlers.gigachat_hendlers import gigachat_router
 from handlers.weather_handlers import weather_router
 from middlewares.db_middlewares import DataBaseMiddleware
@@ -27,6 +28,7 @@ async def bot_connect():
         weather_router,
         currency_router,
         gigachat_router,
+        empty_handler_router,  # этот роутер всегда должен быть последним
     )
     dp.update.middleware(DataBaseMiddleware(session_pool=session_factory))
     await create_db()
