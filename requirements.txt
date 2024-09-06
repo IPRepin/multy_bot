@@ -6,6 +6,11 @@ asyncpg==0.29.0
 asynctest~=0.13.0
 databases~=0.9.0
 gigachain~=0.2.14
+gigachain==0.2.14
+gigachain-community==0.2.12
+gigachain-core==0.2.35.post2
+gigachain-text-splitters==0.2.3
+
 packaging~=23.2
 psycopg2-binary==2.9.9
 pycbrf==1.1.0
