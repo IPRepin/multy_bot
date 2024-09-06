@@ -1,10 +1,10 @@
 """Пример работы с чатом через gigachain"""
 import logging
-import asyncio
+
 from langchain_community.chat_models.gigachat import GigaChat
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
-from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 
 from config import settings
 
