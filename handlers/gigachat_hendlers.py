@@ -12,12 +12,12 @@ gigachat_router = Router()
 logger = logging.getLogger(__name__)
 
 
-@gigachat_router.message(F.text.in_(["💬Новый запрос", "🤖AI маркетолог"]))
+@gigachat_router.message(F.text.in_(["💬Новый запрос", "🔄На главное меню"]))
 async def get_chatting(message: types.Message, state: FSMContext) -> None:
     await state.clear()
     await state.set_state(ChatStates.text)
-    if message.text == "🤖AI маркетолог":
-        await message.answer('Введите ваш запрос. Например "Что ты умеешь?"')
+    if message.text == "🔄На главное меню":
+        await message.answer("Главное меню", reply_markup=await get_main_keyboard())
     else:
         await message.answer("Введите новый запрос.")
 
@@ -34,8 +34,3 @@ async def set_wait_gpt(message: types.Message) -> None:
     await message.answer("Дождитесь обработки предыдущего запроса.")
 
 
-@gigachat_router.message(F.text == "🔄На главное меню")
-async def back_to_main_menu(message: types.Message, state: FSMContext) -> None:
-    await state.clear()
-    await message.answer("Вы вернулись в главное меню.",
-                         reply_markup=await get_main_keyboard())
