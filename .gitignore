@@ -11,7 +11,6 @@ db_bot.db
 *.log
 *.pdf
 docker-compose.yml
-Dockerfile
 .sh
 .coverage
 .test.env
