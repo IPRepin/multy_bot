@@ -1,4 +1,4 @@
-# Бот тренировочны Telegram для работы с AI GigaChat от Сбер. #
+# Бот тренировочный Telegram для работы с AI GigaChat от Сбер. #
 # Version 0.1 #
 
 ![Static Badge](https://img.shields.io/badge/Python-3.11-blue)
@@ -11,7 +11,7 @@
 
 ## Описание проекта ##
 
-Бот тренировочны Telegram для работы с AI GigaChat от Сбер. 
+Бот тренировочный Telegram для работы с AI GigaChat от Сбер. 
 Бот создан для обучения и тренировки работы с библиотекой [GigaChain](https://github.com/ai-forever/gigachain/tree/master?tab=readme-ov-file)
 #### Функции пользователя: ####
 * Возможность взаимодействовать с AI моделью GigaChat Lite в формате "Вопрос-ответ"
